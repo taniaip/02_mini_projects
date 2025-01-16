@@ -1,0 +1,118 @@
+{
+    "id": "Blasto_ST2",
+    "name": "Blastocystis ST2_flemming",
+    "fastaURL": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/ST2_sorted_masked.fasta",
+    "indexURL": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/ST2_sorted_masked.fasta.fai",
+    "chromosomeOrder": [
+        "c_000000000699",
+        "c_000000000012",
+        "c_000000000006",
+        "c_000000000008",
+        "c_000000000001",
+        "c_000000000009",
+        "c_000000000658",
+        "c_000000000665",
+        "c_000000000016",
+        "c_000000000015",
+        "c_000000000014",
+        "c_000000000003",
+        "c_000000000702",
+        "c_000000000017",
+        "c_000000000021",
+        "c_000000000019",
+        "c_000000000031",
+        "c_000000000005",
+        "c_000000000022",
+        "c_000000000027",
+        "c_000000000023",
+        "c_000000000659",
+        "c_000000000025",
+        "c_000000000004",
+        "c_000000000700",
+        "c_000000000026",
+        "c_000000000705",
+        "c_000000000666",
+        "c_000000000703",
+        "c_000000000020",
+        "c_000000000002",
+        "c_000000000028",
+        "c_000000000024",
+        "c_000000000704",
+        "c_000000000011",
+        "c_000000000007",
+        "c_000000000701"
+    ],
+    "tracks": [
+        {
+            "name": "polyAsites_all",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/polyAsites_updated.gff3",
+            "color": "#7b00ff"            
+        },
+        {
+            "name": "polyAsites_has_stop",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/has_stop_polyA.gff3",
+            "color": "#ed48df"            
+        },
+        {
+            "name": "polyAsites_non_stop",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/non_stop_polyA.gff3",
+            "color": "#7b00ff"            
+        },
+        {
+            "name": "polyAsites_not_matched",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/not_matched_polyA.gff3",
+            "color": "#00dad7"            
+        },        
+        {
+            "name": "Repeats",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/repeats.gff3",
+            "color": "#ed48df"
+        },
+        {
+            "name": "Blasto orfs",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/ST2_orfs.gff3",
+            "color": "#00dad7"
+        },
+        {
+            "name": "Illumina",
+            "type": "alignment",
+            "format": "bam",
+            "url": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/ST2_vs_dnaseq_sorted.bam",
+            "indexURL": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/ST2_vs_dnaseq_sorted.bam.bai"
+        },
+        {
+            "name": "RNAseq +",
+            "type": "alignment",
+            "format": "bam",
+            "url": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/rnaseq_vs_ST2.sort.pos.bam",
+            "indexURL": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/rnaseq_vs_ST2.sort.pos.bam.bai"
+        },
+        {
+            "name": "RNAseq -",
+            "type": "alignment",
+            "format": "bam",
+            "url": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/rnaseq_vs_ST2.sort.neg.bam",
+            "indexURL": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/rnaseq_vs_ST2.sort.neg.bam.bai"
+        },
+        {
+            "name": "Stop motif",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/01_igv_overviews/ST2/test_stopmotif_updated.gff3"
+        }    
+    ]
+}
+
+
