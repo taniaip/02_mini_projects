@@ -59,14 +59,36 @@ def assign_polyA_to_genes(gene_pairs, polyA_sites: list[list[str, int, str, str]
 
     return results2, unmatched_polyA_ids
 
+##ibelieve the error is rising from ere that it is not considering the reverse comliment of the negative strands
+# def has_stop_codon(gene, sequences):
+#     """
+#     Check if a given gene has a stop codon at the end.
+#     """
+#     sequence = sequences[gene.seqid][gene.start - 1:gene.end].upper()
+#     return "yes" if sequence[-3:] in ["TAA", "TGA", "TAG"] else "no"
 
 def has_stop_codon(gene, sequences):
     """
-    Check if a given gene has a stop codon at the end.
+    Check if a given gene has a stop codon at the end, considering the strand direction.
     """
+    # Extract the gene sequence
     sequence = sequences[gene.seqid][gene.start - 1:gene.end].upper()
-    return "yes" if sequence[-3:] in ["TAA", "TGA", "TAG"] else "no"
 
+    if gene.strand == "+":
+        # Check for stop codon on the positive strand
+        return "yes" if sequence[-3:] in ["TAA", "TGA", "TAG"] else "no"
+    elif gene.strand == "-":
+        # Check for stop codon on the negative strand (reverse complement)
+        # reverse_complement = {
+        #     "TAA": "AAT",
+        #     "TAG": "GAT",
+        #     "TGA": "AGT"
+        # }
+        return "yes" if sequence[:3] in ["TTA", "TCA", "CTA"] else "no"
+        
+    else:
+        # If strand information is unavailable, return "unknown"
+        return "unknown"
 
 def process_gff3(db):
     """
