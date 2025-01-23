@@ -133,7 +133,7 @@ def assign_polyA_to_genes(
                     matched = True
 
             # Middle intervals
-            elif start_right != 0:
+            if start_right != 0:
                 if (end_left - 3) < start < start_right:
                     within_gene= False
                     if polyA_strand == "+" and strand_left == "+":
@@ -148,7 +148,7 @@ def assign_polyA_to_genes(
                         matched = True
 
             # Last half-interval
-            elif start_right == 0 and end_left - 3 < start:
+            if start_right == 0 and end_left - 3 < start:
                 within_gene= False
                 if polyA_strand == "+" and strand_left == "+":
                     gene = db_genes[gene_left]
