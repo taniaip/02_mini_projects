@@ -18,14 +18,14 @@ args = parser.parse_args()
 
 
 def main():
-    db_genes: FeatureDB = gffutils.create_db(args.genes, dbfn=":memory:", merge_strategy="create_unique")
-    db_polyA: FeatureDB = gffutils.create_db(args.polyA, dbfn=":memory:", merge_strategy="create_unique")
+    db_genes = gffutils.create_db(args.genes, dbfn=":memory:", merge_strategy="create_unique")
+    db_polyA = gffutils.create_db(args.polyA, dbfn=":memory:", merge_strategy="create_unique")
     sequences = load_fasta_sequences(args.fasta)
 
     gene_intervals = process_gene_intervals(db_genes)
     polyA_sites = extract_polyA_sites(db_polyA)
 
-    matched_polyA, unmatched_polyA_ids = assign_polyA_to_genes(gene_intervals, polyA_sites, db_genes, sequences)
+    matched_polyA, within_gene_polyA_ids, unmatched_polyA_ids = assign_polyA_to_genes(gene_intervals, polyA_sites, db_genes, sequences)
 
     # Write output files directly while iterating through polyA features
     with open(args.output_true, "w") as true_file, open(args.output_false, "w") as false_file, open(args.output_not_matched, "w") as unmatched_file:
@@ -46,7 +46,7 @@ def load_fasta_sequences(fasta_file: str) -> Dict[str, str]:
     return sequences
 
 
-def process_gene_intervals(db: FeatureDB) -> List[List[Union[str, int]]]:
+def process_gene_intervals(db) -> List[List[Union[str, int]]]:
     """
     Generate intervals between genes in the GFF3 database.
     """
@@ -78,7 +78,7 @@ def process_gene_intervals(db: FeatureDB) -> List[List[Union[str, int]]]:
     return intervals
 
 
-def extract_polyA_sites(db: gffutils.FeatureDB) -> List[List[Union[str, int]]]:
+def extract_polyA_sites(db) -> List[List[Union[str, int]]]:
     """
     Extract polyA site information, including ID, from the GFF3 database.
     """
@@ -101,7 +101,7 @@ def has_stop_codon(gene: gffutils.Feature, sequences: Dict[str, str]) -> bool:
 def assign_polyA_to_genes(
     gene_intervals: List[List[Union[str, int]]],
     polyA_sites: List[List[Union[str, int]]],
-    db_genes: FeatureDB,
+    db_genes,
     sequences: Dict[str, str]
 ) -> (List[List[Union[str, str]]], List[str]):
     """
@@ -134,13 +134,13 @@ def assign_polyA_to_genes(
             elif start_right != 0:
                 if (end_left - 3) < start < start_right:
                     within_gene= False
-                    if polyA_strand == "+" and strand_left == "+" and 
+                    if polyA_strand == "+" and strand_left == "+":
                         gene = db_genes[gene_left]
                         matched_polyA.append([contig, polyA_id, gene_left, "+", has_stop_codon(gene, sequences)])
                         matched = True
                 elif end_left < start < (start_right + 3):    
                     within_gene= False
-                    if polyA_strand == "-" and strand_right == "-" and
+                    if polyA_strand == "-" and strand_right == "-":
                         gene = db_genes[gene_right]
                         matched_polyA.append([contig, polyA_id, gene_right, "-", has_stop_codon(gene, sequences)])
                         matched = True
@@ -157,12 +157,10 @@ def assign_polyA_to_genes(
         if not matched and within_gene:
             within_gene_polyA_ids.append(polyA_id)
 
-        else:
+        elif not matched and not within_gene:
             unmatched_polyA_ids.append(polyA_id)
 
     return matched_polyA, within_gene_polyA_ids,unmatched_polyA_ids
-
-
 
 if __name__ == "__main__":
     main()
