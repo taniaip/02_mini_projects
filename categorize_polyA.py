@@ -1,16 +1,20 @@
+##python categorize_polyA.py -g1 ST2_orfs.gff3 -g2 polyAsites_updated.gff3 -f ST2_sorted_masked.fasta --output_true new_has_stop_polyA.gff3 --output_false new_non_stop_polyA.gff3 --output_not_matched new_not_matched_polyA.gff3
+
 #!/usr/bin/env python
 
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Tuple
 import argparse
 import gffutils
+from gffutils.feature import Feature
 from Bio import SeqIO
 
-parser = argparse.ArgumentParser(description="Categorize polyA sites into 'has stop codon', 'not having stop codon', and 'not associated with any genes'.")
+parser = argparse.ArgumentParser(description="Categorize polyA sites into 'has stop codon', 
+                                             'not having stop codon', and 'not associated with any genes'.")
 parser.add_argument("-g1", "--genes", required=True, help="Input GFF3 file with gene information.")
 parser.add_argument("-g2", "--polyA", required=True, help="Input GFF3 file with polyA site information.")
 parser.add_argument("-f", "--fasta", required=True, help="Input FASTA file containing genomic sequences.")
-parser.add_argument("--output_yes", required=True, help="Output GFF3 file of polyA sites associated with gens having stop codons.")
-parser.add_argument("--output_no", required=True, help="Output GFF3 file of polyA sites associated with gens not having stop codons.")
+parser.add_argument("--output_true", required=True, help="Output GFF3 file of polyA sites associated with gens having stop codons.")
+parser.add_argument("--output_false", required=True, help="Output GFF3 file of polyA sites associated with gens not having stop codons.")
 parser.add_argument("--output_not_matched", required=True, help="Output GFF3 file of polyA sites not associated with any gens")
 args = parser.parse_args()
 
@@ -166,8 +170,8 @@ def filter_polyAs_by_ids(gff3_file: str, polyA_ids: List[str]) -> List[str]:
 
 
 if __name__ == "__main__":
-    def main():
-        None
+    main()
+  
 
 
 
