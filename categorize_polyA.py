@@ -28,12 +28,14 @@ def main():
     matched_polyA, within_gene_polyA_ids, unmatched_polyA_ids = assign_polyA_to_genes(gene_intervals, polyA_sites, db_genes, sequences)
 
     # Write output files directly while iterating through polyA features
-    with open(args.output_true, "w") as true_file, open(args.output_false, "w") as false_file, open(args.output_not_matched, "w") as unmatched_file:
+    with open(args.output_true, "w") as true_file, open(args.output_false, "w") as false_file, open(args.output_within_gene, "w") as within_file, open(args.output_not_matched, "w") as unmatched_file:
         for feature in db_polyA.features_of_type("polyA"):
             if feature.id in {entry[1] for entry in matched_polyA if entry[-1] is True}:
                 true_file.write(str(feature) + "\n")
             elif feature.id in {entry[1] for entry in matched_polyA if entry[-1] is False}:
                 false_file.write(str(feature) + "\n")
+            elif feature.id in within_gene_polyA_ids:
+                within_file.write(str(feature) + "\n")
             elif feature.id in unmatched_polyA_ids:
                 unmatched_file.write(str(feature) + "\n")
 
@@ -160,7 +162,7 @@ def assign_polyA_to_genes(
         elif not matched and not within_gene:
             unmatched_polyA_ids.append(polyA_id)
 
-    return matched_polyA, within_gene_polyA_ids,unmatched_polyA_ids
+    return matched_polyA, within_gene_polyA_ids, unmatched_polyA_ids
 
 if __name__ == "__main__":
     main()
