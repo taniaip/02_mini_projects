@@ -4,6 +4,7 @@ from typing import List, Dict, Union, Tuple
 import argparse
 import gffutils
 from gffutils.feature import Feature
+from gffutils.interface import FeatureDB
 from Bio import SeqIO
 
 parser = argparse.ArgumentParser(description="Categorize polyA sites into 'has stop codon', 'not having stop codon', and 'not associated with any genes'.")
@@ -17,10 +18,10 @@ parser.add_argument("--output_not_matched", required=True, help="Output GFF3 fil
 args = parser.parse_args()
 
 
-def main():
-    db_genes = gffutils.create_db(args.genes, dbfn=":memory:", merge_strategy="create_unique")
-    db_polyA = gffutils.create_db(args.polyA, dbfn=":memory:", merge_strategy="create_unique")
-    sequences = load_fasta_sequences(args.fasta)
+def main() -> None:
+    db_genes: FeatureDB = gffutils.create_db(args.genes, dbfn=":memory:", merge_strategy="create_unique")
+    db_polyA: FeatureDB = gffutils.create_db(args.polyA, dbfn=":memory:", merge_strategy="create_unique")
+    sequences: Dict[str, str] = load_fasta_sequences(args.fasta)
 
     gene_intervals = process_gene_intervals(db_genes)
     polyA_sites = extract_polyA_sites(db_polyA)
@@ -87,7 +88,7 @@ def extract_polyA_sites(db) -> List[List[Union[str, int]]]:
     return [[feature.seqid, feature.start, feature.strand, feature.id] for feature in db.features_of_type("polyA")]
 
 
-def has_stop_codon(gene: gffutils.Feature, sequences: Dict[str, str]) -> bool:
+def has_stop_codon(gene: Feature, sequences: Dict[str, str]) -> bool:
     """
     Check if a gene has a stop codon based on its strand.
     """
@@ -103,7 +104,7 @@ def has_stop_codon(gene: gffutils.Feature, sequences: Dict[str, str]) -> bool:
 def assign_polyA_to_genes(
     gene_intervals: List[List[Union[str, int]]],
     polyA_sites: List[List[Union[str, int]]],
-    db_genes,
+    db_genes: FeatureDB,
     sequences: Dict[str, str]
 ) -> (List[List[Union[str, str]]], List[str]):
     """
@@ -140,7 +141,7 @@ def assign_polyA_to_genes(
                         gene = db_genes[gene_left]
                         matched_polyA.append([contig, polyA_id, gene_left, "+", has_stop_codon(gene, sequences)])
                         matched = True
-                elif end_left < start < (start_right + 3):    
+                if end_left < start < (start_right + 3):    
                     within_gene= False
                     if polyA_strand == "-" and strand_right == "-":
                         gene = db_genes[gene_right]
