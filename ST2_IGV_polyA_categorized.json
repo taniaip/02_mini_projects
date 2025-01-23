@@ -54,23 +54,36 @@
             "name": "polyAsites_has_stop",
             "type": "annotation",
             "format": "gff3",
-            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/has_stop_polyA.gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/has_stop_polyA_jan23.gff3",
             "color": "#ed48df"            
         },
         {
             "name": "polyAsites_non_stop",
             "type": "annotation",
             "format": "gff3",
-            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/non_stop_polyA.gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/non_stop_polyA_jan23.gff3",
             "color": "#7b00ff"            
         },
         {
             "name": "polyAsites_not_matched",
             "type": "annotation",
             "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/not_matched_polyA_jan23.gff3",
+            "color": "#00dad7"            
+        },
+        {
+            "name": "old_polyAsites_not_matched",
+            "type": "annotation",
+            "format": "gff3",
             "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/not_matched_polyA.gff3",
             "color": "#00dad7"            
-        },        
+        },        {
+            "name": "polyAsites_within_genes",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/within_genes_polyA_jan23.gff3",
+            "color": "#00dad7"            
+        },  
         {
             "name": "Repeats",
             "type": "annotation",
