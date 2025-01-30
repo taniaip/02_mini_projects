@@ -37,7 +37,7 @@ class Interval:
 def main() -> None:
     db_genes: FeatureDB = gffutils.create_db(args.genes, dbfn=":memory:", merge_strategy="create_unique")
     db_polyA: FeatureDB = gffutils.create_db(args.polyA, dbfn=":memory:", merge_strategy="create_unique")
-    sequences = seqI0.index(args.fasta, 'fasta')
+    sequences = SeqIO.index(args.fasta, 'fasta')
 
     # Generate intervals and extract polyA features
     gene_intervals = process_gene_intervals(db_genes)
@@ -90,26 +90,24 @@ def process_gene_intervals(db: FeatureDB) -> List[Interval]:
 
 def has_stop_codon(gene: Feature, sequences: Dict[str, SeqRecord]) -> bool:
     """Check if a gene has a stop codon based on its strand."""
-    sequence = Str(sequences[gene.seqid].seq[gene.start : gene.end+1]).upper()
+    sequence = str(sequences[gene.seqid].seq[gene.start-1 : gene.end]).upper()
     if gene.strand == "+":
         return sequence[-3:] in ["TAA", "TGA", "TAG"]
-    elif gene.strand == "-":
+    if gene.strand == "-":
         return sequence[:3] in ["TTA", "TCA", "CTA"]
-    return False
-
 
 def assign_polyA_to_genes(
     gene_intervals: List[Interval],
     db_polyA: FeatureDB,
     sequences: Dict[str, SeqRecord],
-) -> List[List[str], List[str], List[str], List[str]]:
+) -> Tuple[List[str], List[str], List[str], List[str]]:
     """Assign polyA sites to genes and categorize them."""
     has_stop_matched = []
     non_stop_matched = []
     within_gene_polyA = []
     unmatched_polyA = []
 
-    for polyA in db_polyA.feature_of_type('polyA'):
+    for polyA in db_polyA.features_of_type('polyA'):
         matched = False
         within_gene = True
 
@@ -140,7 +138,7 @@ def assign_polyA_to_genes(
 
         if not matched and within_gene:
             within_gene_polyA.append(polyA.id)
-        elif not matched and not within_gene:
+        else:
             unmatched_polyA.append(polyA.id)
 
     return has_stop_matched, non_stop_matched, within_gene_polyA, unmatched_polyA
