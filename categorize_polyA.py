@@ -15,8 +15,8 @@ parser = argparse.ArgumentParser(description="Categorize polyA sites into genomi
 parser.add_argument("-g1", "--genes", required=True, help="Input GFF3 file with gene information.")
 parser.add_argument("-g2", "--polyA", required=True, help="Input GFF3 file with polyA site information.")
 parser.add_argument("-f", "--fasta", required=True, help="Input FASTA file containing genomic sequences.")
-parser.add_argument("--output_true", required=True, help="Output file for polyA sites associated with genes having stop codons.")
-parser.add_argument("--output_false", required=True, help="Output file for polyA sites associated with genes not having stop codons.")
+parser.add_argument("--output_has_stop", required=True, help="Output file for polyA sites associated with genes having stop codons.")
+parser.add_argument("--output_non_stop", required=True, help="Output file for polyA sites associated with genes not having stop codons.")
 parser.add_argument("--output_within_gene", required=True, help="Output file for polyA sites within genes.")
 parser.add_argument("--output_not_matched", required=True, help="Output file for polyA sites not associated with any genes.")
 args = parser.parse_args()
@@ -44,9 +44,9 @@ def main() -> None:
 
     # Assign polyA to categories and write directly to files
     assign_polyA_to_genes(
-        gene_intervals: List[Interval],
-        db_polyA: FeatureDB,
-        sequences: Dict[str, SeqRecord],
+        gene_intervals,
+        db_polyA,
+        sequences,
         output_has_stop=args.output_has_stop,
         output_non_stop=args.output_non_stop,
         output_within_gene=args.output_within_gene,
