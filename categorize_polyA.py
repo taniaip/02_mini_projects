@@ -44,11 +44,11 @@ def main() -> None:
 
     # Assign polyA to categories and write directly to files
     assign_polyA_to_genes(
-        gene_intervals,
-        db_polyA,
-        sequences,
-        output_true=args.output_true,
-        output_false=args.output_false,
+        gene_intervals: List[Interval],
+        db_polyA: FeatureDB,
+        sequences: Dict[str, SeqRecord],
+        output_has_stop=args.output_has_stop,
+        output_non_stop=args.output_non_stop,
         output_within_gene=args.output_within_gene,
         output_not_matched=args.output_not_matched
     )
@@ -95,14 +95,14 @@ def assign_polyA_to_genes(
     gene_intervals: List[Interval],
     db_polyA: FeatureDB,
     sequences: Dict[str, SeqRecord],
-    output_true: str,
-    output_false: str,
+    output_has_stop: str,
+    output_non_stop: str,
     output_within_gene: str,
     output_not_matched: str,
 ) -> None:
     """Assign polyA sites to genes, categorize them, and write directly to output files."""
-    with open(output_true, "w") as true_file, \
-         open(output_false, "w") as false_file, \
+    with open(output_has_stop, "w") as has_stop_file, \
+         open(output_non_stop, "w") as non_stop_file, \
          open(output_within_gene, "w") as within_file, \
          open(output_not_matched, "w") as unmatched_file:
 
@@ -121,9 +121,9 @@ def assign_polyA_to_genes(
                         matched = True
                         gene = interval.gene_right
                         if has_stop_codon(gene, sequences):
-                            true_file.write(str(polyA) + "\n")
+                            has_stop_file.write(str(polyA) + "\n")
                         else:
-                            false_file.write(str(polyA) + "\n")
+                            non_stop_file.write(str(polyA) + "\n")
 
                 if interval.start - 3 <= polyA.start <= interval.end:
                     within_gene = False
@@ -131,9 +131,9 @@ def assign_polyA_to_genes(
                         matched = True
                         gene = interval.gene_left
                         if has_stop_codon(gene, sequences):
-                            true_file.write(str(polyA) + "\n")
+                            has_stop_file.write(str(polyA) + "\n")
                         else:
-                            false_file.write(str(polyA) + "\n")
+                            non_stop_file.write(str(polyA) + "\n")
 
             if not matched and within_gene:
                 within_file.write(str(polyA) + "\n")
