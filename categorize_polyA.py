@@ -26,12 +26,12 @@ class Interval:
     """Class representing an interval between two genes."""
     def __init__(self, contig: str, gene_left: Optional[Feature], gene_right: Optional[Feature]):
         self.contig = contig
-        self.start = gene_left.end if gene_left else 0
-        self.end = gene_right.start if gene_right else sys.maxsize
-        self.gene_left = gene_left
-        self.gene_right = gene_right
-        self.strand_left = gene_left.strand if gene_left else None
-        self.strand_right = gene_right.strand if gene_right else None
+        self.start = gene_left.end if gene_left else 0 #zero for the start of the interval before the first gene 
+        self.end = gene_right.start if gene_right else sys.maxsize #maximum in python for the end of the interval after the last gene 
+        self.gene_left = gene_left if gene_left else None #None for the first interval left-hand side
+        self.gene_right = gene_right if gene_right else None #None for the last interval right-hand side
+        self.strand_left = gene_left.strand if gene_left else None #None for the first interval left-hand side
+        self.strand_right = gene_right.strand if gene_right else None #None for the last interval right-hand side
 
 
 def main() -> None:
@@ -67,17 +67,9 @@ def process_gene_intervals(db: FeatureDB) -> List[Interval]:
     for contig, genes in genes_by_contig.items():
         genes.sort(key=lambda g: g.start)
 
-        # First gene interval
-        first_gene = genes[0]
-        intervals.append(Interval(contig = contig, gene_left = None, gene_right = first_gene))
-
         # Gene-to-gene intervals
-        for i in range(len(genes) - 1):
-            intervals.append(Interval(contig = contig, gene_left = genes[i], gene_right = genes[i + 1]))
-
-        # Last gene interval
-        last_gene = genes[-1]
-        intervals.append(Interval(contig = contig, gene_left = last_gene, gene_right = None))
+        for i in range(len(genes)+1):
+            intervals.append(Interval(contig = contig, gene_left = genes[i-1], gene_right = genes[i]))
 
     return intervals
 
