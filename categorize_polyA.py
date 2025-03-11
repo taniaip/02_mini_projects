@@ -26,12 +26,12 @@ class Interval:
     """Class representing an interval between two genes."""
     def __init__(self, contig: str, gene_left: Optional[Feature], gene_right: Optional[Feature]):
         self.contig = contig
-        self.start = gene_left.end if gene_left else 0 #zero for the start of the interval before the first gene 
-        self.end = gene_right.start if gene_right else sys.maxsize #maximum in python for the end of the interval after the last gene 
-        self.gene_left = gene_left if gene_left else None #None for the first interval left-hand side
-        self.gene_right = gene_right if gene_right else None #None for the last interval right-hand side
-        self.strand_left = gene_left.strand if gene_left else None #None for the first interval left-hand side
-        self.strand_right = gene_right.strand if gene_right else None #None for the last interval right-hand side
+        self.start = gene_left.end if gene_left else 0
+        self.end = gene_right.start if gene_right else sys.maxsize
+        self.gene_left = gene_left
+        self.gene_right = gene_right
+        self.strand_left = gene_left.strand if gene_left else None
+        self.strand_right = gene_right.strand if gene_right else None
 
 
 def main() -> None:
@@ -53,25 +53,80 @@ def main() -> None:
         output_not_matched=args.output_not_matched
     )
 
-
 def process_gene_intervals(db: FeatureDB) -> List[Interval]:
-    """Generate intervals between genes in the GFF3 database."""
-    intervals = []
+    """
+    Generate intervals between 'big' genes in the GFF3 database,
+    skipping smaller genes overlapped by a bigger gene.
+    """
+    intervals: List[Interval] = []
     genes_by_contig: Dict[str, List[Feature]] = {}
 
+    # Collect genes by contig
     for gene in db.features_of_type("gene"):
         if gene.seqid not in genes_by_contig:
             genes_by_contig[gene.seqid] = []
         genes_by_contig[gene.seqid].append(gene)
 
+    # Process each contig individually
     for contig, genes in genes_by_contig.items():
-        genes.sort(key=lambda g: g.start)
+        # Sort genes by their start positions and in case of starting at the same point prioritise the ones with further ends
+        genes.sort(key=lambda g: (g.start, -g.end))
 
-        # Gene-to-gene intervals
-        for i in range(len(genes)+1):
-            intervals.append(Interval(contig = contig, gene_left = genes[i-1], gene_right = genes[i]))
+        # Create interval from "start of genome" to the first gene
+        first_gene = genes[0]
+        intervals.append(Interval(contig=contig, gene_left=None, gene_right=first_gene))
+        correct_start = first_gene
+
+        # Iterate over the remaining genes
+        for i in range(1, len(genes)):
+            # If next gene is overshadowed by correct_start (start < correct_start.end), skip it
+            if genes[i].start < correct_start.end:
+                continue
+
+            # Otherwise, create an interval from the last big gene to this new gene
+            intervals.append(Interval(contig=contig, gene_left=correct_start, gene_right=genes[i]))
+
+            correct_start = genes[i]
+
+        # Create interval from the last big gene to "end of genome"
+        intervals.append(Interval(contig=contig, gene_left=correct_start, gene_right=None))
 
     return intervals
+
+# def process_gene_intervals(db: FeatureDB) -> List[Interval]:
+#     """Generate intervals between genes in the GFF3 database."""
+#     intervals = []
+#     genes_by_contig: Dict[str, List[Feature]] = {}
+
+#     for gene in db.features_of_type("gene"):
+#         if gene.seqid not in genes_by_contig:
+#             genes_by_contig[gene.seqid] = []
+#         genes_by_contig[gene.seqid].append(gene)
+
+#     for contig, genes in genes_by_contig.items():
+#         genes.sort(key=lambda g: g.start)
+
+#         # First gene interval
+#         first_gene = genes[0]
+#         intervals.append(Interval(contig=contig, gene_left=None, gene_right=first_gene))
+
+#         # Gene-to-gene intervals
+#         i=0
+#         correct_start = genes[0]
+#         for i in range (1, len(genes)-1):
+#             if correct_start.end > genes[i].start: 
+#                 if i == len(genes)-1:
+#                     break
+#                 while correct_start.end > genes[i].start:
+#                     continue
+#             elif correct_start.end < genes[i+1].start:
+#                 intervals.append(Interval(contig=contig, gene_left=correct_start, gene_right=genes[i]))    
+#                 correct_start = genes[i+1]
+
+#         # Last gene interval
+#         intervals.append(Interval(contig=contig, gene_left=correct_start, gene_right=None))
+
+#     return intervals
 
 
 def has_stop_codon(gene: Feature, sequences: Dict[str, SeqRecord]) -> bool:
@@ -135,6 +190,161 @@ def assign_polyA_to_genes(
 
 if __name__ == "__main__":
     main()
+
+
+
+
+# #!/usr/bin/env python
+# import sys
+# import argparse
+
+# import gffutils
+# from Bio import SeqIO
+
+# from typing import List, Dict, Tuple, Optional
+# from gffutils.feature import Feature
+# from gffutils.interface import FeatureDB
+# from Bio.SeqRecord import SeqRecord
+
+# # Argument Parser
+# parser = argparse.ArgumentParser(description="Categorize polyA sites into genomic contexts.")
+# parser.add_argument("-g1", "--genes", required=True, help="Input GFF3 file with gene information.")
+# parser.add_argument("-g2", "--polyA", required=True, help="Input GFF3 file with polyA site information.")
+# parser.add_argument("-f", "--fasta", required=True, help="Input FASTA file containing genomic sequences.")
+# parser.add_argument("--output_has_stop", required=True, help="Output file for polyA sites associated with genes having stop codons.")
+# parser.add_argument("--output_non_stop", required=True, help="Output file for polyA sites associated with genes not having stop codons.")
+# parser.add_argument("--output_within_gene", required=True, help="Output file for polyA sites within genes.")
+# parser.add_argument("--output_not_matched", required=True, help="Output file for polyA sites not associated with any genes.")
+# args = parser.parse_args()
+
+
+# class Interval:
+#     """Class representing an interval between two genes."""
+#     def __init__(self, contig: str, gene_left: Optional[Feature], gene_right: Optional[Feature]):
+#         self.contig = contig
+#         self.start = gene_left.end if gene_left else 0
+#         self.end = gene_right.start if gene_right else sys.maxsize
+#         self.gene_left = gene_left
+#         self.gene_right = gene_right
+#         self.strand_left = gene_left.strand if gene_left else None
+#         self.strand_right = gene_right.strand if gene_right else None
+
+
+# def main() -> None:
+#     db_genes: FeatureDB = gffutils.create_db(args.genes, dbfn=":memory:", merge_strategy="create_unique")
+#     db_polyA: FeatureDB = gffutils.create_db(args.polyA, dbfn=":memory:", merge_strategy="create_unique")
+#     sequences = SeqIO.index(args.fasta, 'fasta')
+
+#     # Generate intervals
+#     gene_intervals = process_gene_intervals(db_genes)
+
+#     # Assign polyA to categories and write directly to files
+#     assign_polyA_to_genes(
+#         gene_intervals,
+#         db_polyA,
+#         sequences,
+#         output_has_stop=args.output_has_stop,
+#         output_non_stop=args.output_non_stop,
+#         output_within_gene=args.output_within_gene,
+#         output_not_matched=args.output_not_matched
+#     )
+
+
+# def process_gene_intervals(db: FeatureDB) -> List[Interval]:
+#     """Generate intervals between genes in the GFF3 database."""
+#     intervals = []
+#     genes_by_contig: Dict[str, List[Feature]] = {}
+
+#     for gene in db.features_of_type("gene"):
+#         if gene.seqid not in genes_by_contig:
+#             genes_by_contig[gene.seqid] = []
+#         genes_by_contig[gene.seqid].append(gene)
+
+#     for contig, genes in genes_by_contig.items():
+#         genes.sort(key=lambda g: g.start)
+
+#         # First gene interval
+#         first_gene = genes[0]
+#         intervals.append(Interval(contig = contig, gene_left = None, gene_right = first_gene))
+
+#         # Gene-to-gene intervals
+#         for i in range(len(genes) - 1):
+#             intervals.append(Interval(contig = contig, gene_left = genes[i], gene_right = genes[i + 1]))
+
+#         # Last gene interval
+#         last_gene = genes[-1]
+#         intervals.append(Interval(contig = contig, gene_left = last_gene, gene_right = None))
+
+#     return intervals
+
+
+# def has_stop_codon(gene: Feature, sequences: Dict[str, SeqRecord]) -> bool:
+#     """Check if a gene has a stop codon based on its strand."""
+#     sequence = str(sequences[gene.seqid].seq[gene.start-1 : gene.end]).upper()
+#     if gene.strand == "+":
+#         return sequence[-3:] in ["TAA", "TGA", "TAG"]
+#     if gene.strand == "-":
+#         return sequence[:3] in ["TTA", "TCA", "CTA"]
+
+
+# def assign_polyA_to_genes(
+#     gene_intervals: List[Interval],
+#     db_polyA: FeatureDB,
+#     sequences: Dict[str, SeqRecord],
+#     output_has_stop: str,
+#     output_non_stop: str,
+#     output_within_gene: str,
+#     output_not_matched: str,
+# ) -> None:
+#     """Assign polyA sites to genes, categorize them, and write directly to output files."""
+#     with open(output_has_stop, "w") as has_stop_file, \
+#          open(output_non_stop, "w") as non_stop_file, \
+#          open(output_within_gene, "w") as within_file, \
+#          open(output_not_matched, "w") as unmatched_file:
+
+#         for polyA in db_polyA.features_of_type('polyA'):
+#             matched = False
+#             within_gene = True
+
+#             for interval in gene_intervals:
+#                 if polyA.seqid != interval.contig:
+#                     continue
+
+#                 # Check if polyA falls within an interval and the strands match
+#                 if interval.start <= polyA.start <= interval.end + 3:
+#                     within_gene = False
+#                     if polyA.strand == "-" and interval.strand_right == "-":
+#                         matched = True
+#                         gene = interval.gene_right
+#                         if has_stop_codon(gene, sequences):
+#                             has_stop_file.write(str(polyA) + "\n")
+#                         else:
+#                             non_stop_file.write(str(polyA) + "\n")
+
+#                 if interval.start - 3 <= polyA.start <= interval.end:
+#                     within_gene = False
+#                     if polyA.strand == "+" and interval.strand_left == "+":
+#                         matched = True
+#                         gene = interval.gene_left
+#                         if has_stop_codon(gene, sequences):
+#                             has_stop_file.write(str(polyA) + "\n")
+#                         else:
+#                             non_stop_file.write(str(polyA) + "\n")
+
+#             if not matched and within_gene:
+#                 within_file.write(str(polyA) + "\n")
+#             elif not matched:
+#                 unmatched_file.write(str(polyA) + "\n")
+
+
+# if __name__ == "__main__":
+#     main()
+
+
+
+
+
+
 
 
 # ### Everything is perefctly edited based on the 4th feedback on Jan 30;
