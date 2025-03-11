@@ -1,3 +1,6 @@
+# python categorize_polyA.py -g1 ST2_orfs.gff3 -g2 polyAsites_updated.gff3 -f ST2_sorted_masked.fasta --output_has_stop march4_has_stop_polyA.gff3
+#  --output_non_stop march4_non_stop_polyA.gff3 --output_within_gene march4_within_genes_polyA.gff3 --output_not_matched march4_not_matched_polyA.gff3
+
 #!/usr/bin/env python
 import sys
 import argparse

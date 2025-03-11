@@ -1,4 +1,10 @@
 # $ python UTR_length_finder.py -g1 ST2_orfs.gff3 -g2 march4_has_stop_polyA.gff3 -f ST2_sorted_masked.fasta > UTR_length_info_new.txt
+
+# $ grep -c "there must be" UTR_length_info_new.txt
+# 52 
+
+
+# $ python UTR_length_finder.py -g1 ST2_orfs.gff3 -g2 march4_has_stop_polyA.gff3 -f ST2_sorted_masked.fasta > UTR_length_info_new.txt
 #!/usr/bin/env python
 import sys
 import argparse
@@ -110,6 +116,8 @@ def find_UTR_lengths(
 ) -> List[int]: 
     """Assign polyA sites to genes, categorize them, and return UTR lengths."""
     UTR_lengths = []
+    geneIdToCheck = None
+    UTRlengthToCheck = None
     for polyA in db_polyA.features_of_type('polyA'):
         for interval in gene_intervals:
             if polyA.seqid != interval.contig:
@@ -118,12 +126,27 @@ def find_UTR_lengths(
             # Check if polyA falls within an interval and the strands match
             if interval.start - 3 <= polyA.start <= interval.end + 3:
                 if polyA.strand == "-" and interval.strand_right == "-":
-                    UTR_lengths.append(interval.end - polyA.start)
-                    print(interval.gene_right.id, polyA.id, interval.end - polyA.start)
+                    current_gene = interval.gene_right.id
+                    current_UTR_length = interval.end - polyA.start
+                    UTR_lengths.append(current_UTR_length)
 
                 elif polyA.strand == "+" and interval.strand_left == "+":
-                    UTR_lengths.append(polyA.start - interval.start)
-                    print(interval.gene_left.id, polyA.id, polyA.start - interval.start)
+                    current_gene = interval.gene_left.id
+                    current_UTR_length =polyA.start - interval.start
+                    UTR_lengths.append(current_UTR_length)
+
+                print(current_gene, polyA.id, current_UTR_length)
+
+                # Only do the comparison if both geneIdToCheck and UTRlengthToCheck are already defined
+                if geneIdToCheck is not None and UTRlengthToCheck is not None:
+                # Check if we have the same gene, and if the difference is bigger than 50
+                    if geneIdToCheck == current_gene and abs(UTRlengthToCheck - current_UTR_length) > 50:
+                        print("there must be a gene missing between", polyAtoCheck, "and", polyA.id)
+
+                # Update these variables for the next comparison
+                geneIdToCheck = current_gene
+                UTRlengthToCheck = current_UTR_length
+                polyAtoCheck = polyA.id
 
     return UTR_lengths
 
