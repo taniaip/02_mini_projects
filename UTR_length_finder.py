@@ -54,7 +54,7 @@ def main() -> None:
     UTR_lengths_list = find_UTR_lengths(gene_intervals, db_polyA, sequences)
 
     df = pd.DataFrame(UTR_lengths_list, columns=["UTR Length"])
-    plt.xlim(-10, 500)  # Set max x-axis to 1000
+    plt.xlim(-10, 200)  # Set max x-axis to 1000
     sns.histplot(df, x="UTR Length", bins=1000, kde=True).get_figure().savefig("UTR_length_distribution.jpg", dpi=300)
       
 
@@ -128,12 +128,17 @@ def find_UTR_lengths(
                 if polyA.strand == "-" and interval.strand_right == "-":
                     current_gene = interval.gene_right.id
                     current_UTR_length = interval.end - polyA.start
-                    UTR_lengths.append(current_UTR_length)
+
 
                 elif polyA.strand == "+" and interval.strand_left == "+":
                     current_gene = interval.gene_left.id
                     current_UTR_length =polyA.start - interval.start
+
+
+                if current_UTR_length < 1000:
                     UTR_lengths.append(current_UTR_length)
+                else:
+                    print(f"WARNING: UTR ({current_UTR_length} bp) for gene {current_gene} is unusually long; a missing gene may be possible.")
 
                 print(current_gene, polyA.id, current_UTR_length)
 
@@ -141,7 +146,7 @@ def find_UTR_lengths(
                 if geneIdToCheck is not None and UTRlengthToCheck is not None:
                 # Check if we have the same gene, and if the difference is bigger than 50
                     if geneIdToCheck == current_gene and abs(UTRlengthToCheck - current_UTR_length) > 50:
-                        print("there must be a gene missing between", polyAtoCheck, "and", polyA.id)
+                        print(f"WARNING: there might be a gene missing between {polyAtoCheck} and {polyA.id}")
 
                 # Update these variables for the next comparison
                 geneIdToCheck = current_gene
