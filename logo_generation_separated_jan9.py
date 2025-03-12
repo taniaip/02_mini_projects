@@ -2,6 +2,7 @@ import argparse
 from Bio import SeqIO
 from Bio.Seq import Seq
 import weblogo as wl
+import regex 
 import io
 
 # Argument parser setup
@@ -30,42 +31,71 @@ parser.add_argument(
 
 
 def extract_polyA_sequences(gff3_file, fasta_file, flank=24):
-    """
-    Extract sequences around polyA sites specified in the GFF3 file from the FASTA file.
-    :param gff3_file: GFF3 file with polyA site information.
-    :param fasta_file: FASTA file containing genomic sequences.
-    :param flank: Number of bases to extract upstream and downstream of the polyA site.
-    :return: List of sequences around polyA sites.
-    """
-    # Load sequences from FASTA
-    fasta_sequences = {record.id: str(record.seq) for record in SeqIO.parse(fasta_file, "fasta")}
-
-    # Extract sequences from GFF3
+    # Initialize category lists
+    sequences_3 = []
+    sequences_4 = []
+    sequences_5 = []
+    sequences_else = []
     sequences = []
-    with open(gff3_file, "r") as gff3:
-        for line in gff3:
+
+    # Precompile your three patterns.
+    # Explanation: 
+    #   .{24}   --> skip first 24 positions
+    #   ([ACGT]{3}) --> exactly 3 bases
+    #   ([ACGT]{8}){e<=2} --> 8-base substring with up to 2 mismatches to "TGTTTGTT"
+
+    # We'll do a simpler approach: we match the explicit "TGTTTGTT" with {s<=2} for substitutions only, ignoring insertions/deletions.
+    pattern_3 = regex.compile(rf"^(.{{24}})([ACGT]{{3}})(TGTTTGTT){{s<=2}}", flags=regex.IGNORECASE)
+    pattern_4 = regex.compile(rf"^(.{{24}})([ACGT]{{4}})(TGTTTGTT){{s<=2}}", flags=regex.IGNORECASE)
+    pattern_5 = regex.compile(rf"^(.{{24}})([ACGT]{{5}})(TGTTTGTT){{s<=2}}", flags=regex.IGNORECASE)
+
+    # Load FASTA
+    fasta_seqs = {record.id: str(record.seq) for record in SeqIO.parse(fasta_file, "fasta")}
+
+    # Parse GFF3
+    with open(gff3_file, "r") as gf:
+        for line in gf:
             if line.startswith("#"):
                 continue
-            columns = line.strip().split("\t")
-            if len(columns) < 9 or columns[2] != "polyA":  # Ensure polyA feature type
+            parts = line.strip().split("\t")
+            if len(parts) < 9 or parts[2] != "polyA":
                 continue
 
-            seqid = columns[0]  # Contig/Sequence ID
-            start = int(columns[3]) - 1  # 0-based start position
-            strand = columns[6]  # Strand
+            seqid = parts[0]
+            start = int(parts[3]) - 1  # 0-based
+            strand = parts[6]
 
-            if seqid not in fasta_sequences:
-                continue  # Skip if contig is not in the FASTA file
+            if seqid not in fasta_seqs:
+                continue
 
-            # Extract the neighborhood sequence
-            contig_sequence = fasta_sequences[seqid]
-            polyA_region_seq = contig_sequence[max(0, start - flank):start + flank + 1].upper()
+            full_seq = fasta_seqs[seqid]
+            # Extract ± flank
+            region_seq = full_seq[max(0, start - flank) : start + flank + 1].upper()
 
-            # Reverse complement if the strand is negative
+            # Reverse complement if negative
             if strand == "-":
-                polyA_region_seq = str(Seq(polyA_region_seq).reverse_complement())
+                region_seq = str(Seq(region_seq).reverse_complement())
+            
+            sequences.append(region_seq)
 
-            sequences.append(polyA_region_seq)
+            # Attempt to match with each pattern
+            matched_3 = pattern_3.match(region_seq)
+            matched_4 = pattern_4.match(region_seq)
+            matched_5 = pattern_5.match(region_seq)
+
+            if matched_3:
+                sequences_3.append(region_seq)
+            elif matched_4:
+                sequences_4.append(region_seq)
+            elif matched_5:
+                sequences_5.append(region_seq)
+            else:
+                sequences_else.append(region_seq)
+
+    print("Group with 3-gap and TGTTTGTT (<=2 subs):", len(sequences_3))
+    print("Group with 4-gap:", len(sequences_4))
+    print("Group with 5-gap:", len(sequences_5))
+    print("Others (no match):", len(sequences_else))
 
     return sequences
 
