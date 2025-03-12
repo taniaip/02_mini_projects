@@ -85,6 +85,13 @@
             "color": "#00dad7"            
         },  
         {
+            "name": "Else_in_logo",
+            "type": "annotation",
+            "format": "gff3",
+            "url": "/Users/tania/projects/blasto_stop_motif/02_mini_projects/else_polyAs_logo.gff3",
+            "color": "#ed48df"            
+        },
+        {
             "name": "Repeats",
             "type": "annotation",
             "format": "gff3",
