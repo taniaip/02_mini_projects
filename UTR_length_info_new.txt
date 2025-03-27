@@ -238,7 +238,7 @@ ORF_000592 polyA_site_00318_+_readcount_21 15
 ORF_000593 polyA_site_00319_+_readcount_1 10
 ORF_000599 polyA_site_00320_+_readcount_2 27
 ORF_000599 polyA_site_00321_+_readcount_1 276
-WARNING: there might be a gene missing between polyA_site_00320_+_readcount_2 and polyA_site_00321_+_readcount_1
+WARNING: For gene ORF_000599, polyA polyA_site_00320_+_readcount_2 and polyA_site_00321_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_000606 polyA_site_00323_+_readcount_11 33
 ORF_000608 polyA_site_00324_+_readcount_26 21
 ORF_000610 polyA_site_00325_+_readcount_6 14
@@ -298,7 +298,7 @@ ORF_000764 polyA_site_00395_+_readcount_1 8
 ORF_000767 polyA_site_00397_+_readcount_7 24
 WARNING: UTR (1512 bp) for gene ORF_000767 is unusually long; a missing gene may be possible.
 ORF_000767 polyA_site_00398_+_readcount_1 1512
-WARNING: there might be a gene missing between polyA_site_00397_+_readcount_7 and polyA_site_00398_+_readcount_1
+WARNING: For gene ORF_000767, polyA polyA_site_00397_+_readcount_7 and polyA_site_00398_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_000772 polyA_site_00400_+_readcount_5 30
 ORF_000773 polyA_site_00401_+_readcount_1 3
 ORF_000773 polyA_site_00402_+_readcount_1 4
@@ -334,7 +334,7 @@ ORF_000848 polyA_site_00434_+_readcount_15 5
 ORF_000856 polyA_site_00435_+_readcount_7 4
 WARNING: UTR (2460 bp) for gene ORF_000856 is unusually long; a missing gene may be possible.
 ORF_000856 polyA_site_00436_+_readcount_126 2460
-WARNING: there might be a gene missing between polyA_site_00435_+_readcount_7 and polyA_site_00436_+_readcount_126
+WARNING: For gene ORF_000856, polyA polyA_site_00435_+_readcount_7 and polyA_site_00436_+_readcount_126 differ in UTR length by more than 50 bp. 
 WARNING: UTR (2459 bp) for gene ORF_000856 is unusually long; a missing gene may be possible.
 ORF_000856 polyA_site_00437_+_readcount_5 2459
 WARNING: UTR (2476 bp) for gene ORF_000856 is unusually long; a missing gene may be possible.
@@ -427,7 +427,7 @@ ORF_001049 polyA_site_00531_+_readcount_2 6
 ORF_001050 polyA_site_00532_+_readcount_6 3
 ORF_001051 polyA_site_00533_+_readcount_3 38
 ORF_001051 polyA_site_00534_+_readcount_1 112
-WARNING: there might be a gene missing between polyA_site_00533_+_readcount_3 and polyA_site_00534_+_readcount_1
+WARNING: For gene ORF_001051, polyA polyA_site_00533_+_readcount_3 and polyA_site_00534_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_001051 polyA_site_00535_+_readcount_1 114
 ORF_001053 polyA_site_00536_+_readcount_1 14
 ORF_001059-b polyA_site_00539_+_readcount_9 72
@@ -644,7 +644,7 @@ ORF_001538 polyA_site_00806_+_readcount_1 0
 ORF_001542 polyA_site_00807_+_readcount_1 26
 ORF_001546 polyA_site_00809_+_readcount_2 2
 ORF_001546 polyA_site_00810_+_readcount_4 829
-WARNING: there might be a gene missing between polyA_site_00809_+_readcount_2 and polyA_site_00810_+_readcount_4
+WARNING: For gene ORF_001546, polyA polyA_site_00809_+_readcount_2 and polyA_site_00810_+_readcount_4 differ in UTR length by more than 50 bp. 
 ORF_001548 polyA_site_00811_+_readcount_1 4
 ORF_001549 polyA_site_00812_+_readcount_7 0
 ORF_001555 polyA_site_00814_+_readcount_1 0
@@ -709,14 +709,14 @@ ORF_001697 polyA_site_00887_+_readcount_1 90
 ORF_001697 polyA_site_00888_+_readcount_1 125
 ORF_001698 polyA_site_00889_+_readcount_2 4
 ORF_001698 polyA_site_00890_+_readcount_1 485
-WARNING: there might be a gene missing between polyA_site_00889_+_readcount_2 and polyA_site_00890_+_readcount_1
+WARNING: For gene ORF_001698, polyA polyA_site_00889_+_readcount_2 and polyA_site_00890_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_001700 polyA_site_00892_+_readcount_1 41
 ORF_001701 polyA_site_00893_+_readcount_5 26
 ORF_001701 polyA_site_00894_+_readcount_3 107
-WARNING: there might be a gene missing between polyA_site_00893_+_readcount_5 and polyA_site_00894_+_readcount_3
+WARNING: For gene ORF_001701, polyA polyA_site_00893_+_readcount_5 and polyA_site_00894_+_readcount_3 differ in UTR length by more than 50 bp. 
 WARNING: UTR (1059 bp) for gene ORF_001701 is unusually long; a missing gene may be possible.
 ORF_001701 polyA_site_00895_+_readcount_1 1059
-WARNING: there might be a gene missing between polyA_site_00894_+_readcount_3 and polyA_site_00895_+_readcount_1
+WARNING: For gene ORF_001701, polyA polyA_site_00894_+_readcount_3 and polyA_site_00895_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_001703-b polyA_site_00896_+_readcount_12 993
 ORF_001711 polyA_site_00897_+_readcount_11 5
 ORF_001714 polyA_site_00898_+_readcount_2 0
@@ -831,7 +831,6 @@ ORF_002017 polyA_site_01043_+_readcount_1 5
 ORF_002018 polyA_site_01044_+_readcount_1 24
 ORF_002018 polyA_site_01045_+_readcount_14 25
 ORF_002019 polyA_site_01046_+_readcount_6 18
-ORF_002021 polyA_site_01047_+_readcount_1 -3
 ORF_002021 polyA_site_01048_+_readcount_4 1
 ORF_002028 polyA_site_01049_+_readcount_1 17
 ORF_002029 polyA_site_01050_+_readcount_22 15
@@ -1009,7 +1008,6 @@ ORF_002466 polyA_site_01261_+_readcount_4 7
 ORF_002471 polyA_site_01263_+_readcount_6 0
 ORF_002471 polyA_site_01264_+_readcount_3 -1
 ORF_002474 polyA_site_01267_+_readcount_3 401
-ORF_002480-b polyA_site_01270_+_readcount_1 -3
 ORF_002480-b polyA_site_01271_+_readcount_4 3
 ORF_002485 polyA_site_01272_+_readcount_4 272
 ORF_002486 polyA_site_01273_+_readcount_2 12
@@ -1021,7 +1019,7 @@ ORF_002498 polyA_site_01283_+_readcount_12 8
 ORF_002501 polyA_site_01284_+_readcount_1 28
 WARNING: UTR (5172 bp) for gene ORF_002501 is unusually long; a missing gene may be possible.
 ORF_002501 polyA_site_01285_+_readcount_1 5172
-WARNING: there might be a gene missing between polyA_site_01284_+_readcount_1 and polyA_site_01285_+_readcount_1
+WARNING: For gene ORF_002501, polyA polyA_site_01284_+_readcount_1 and polyA_site_01285_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_002504 polyA_site_01286_+_readcount_3 19
 ORF_002514 polyA_site_01288_+_readcount_30 17
 ORF_002517 polyA_site_01290_+_readcount_1 13
@@ -1155,7 +1153,7 @@ ORF_002868 polyA_site_01445_+_readcount_4 11
 FUN_006097 polyA_site_01446_+_readcount_16 18
 WARNING: UTR (5016 bp) for gene FUN_006097 is unusually long; a missing gene may be possible.
 FUN_006097 polyA_site_01447_+_readcount_1 5016
-WARNING: there might be a gene missing between polyA_site_01446_+_readcount_16 and polyA_site_01447_+_readcount_1
+WARNING: For gene FUN_006097, polyA polyA_site_01446_+_readcount_16 and polyA_site_01447_+_readcount_1 differ in UTR length by more than 50 bp. 
 WARNING: UTR (5019 bp) for gene FUN_006097 is unusually long; a missing gene may be possible.
 FUN_006097 polyA_site_01448_+_readcount_1 5019
 ORF_002872 polyA_site_01449_+_readcount_1 0
@@ -1239,7 +1237,6 @@ ORF_003094-b polyA_site_01544_+_readcount_1 -1
 ORF_003099-b polyA_site_01545_+_readcount_2 10
 ORF_003104 polyA_site_01546_+_readcount_1 -1
 ORF_003110 polyA_site_01548_+_readcount_3 -1
-ORF_003112 polyA_site_01549_+_readcount_1 -3
 ORF_003117 polyA_site_01550_+_readcount_3 38
 ORF_003118 polyA_site_01551_+_readcount_1 35
 ORF_003119 polyA_site_01552_+_readcount_16 2
@@ -1269,7 +1266,7 @@ ORF_003169 polyA_site_01578_+_readcount_4 24
 ORF_003172 polyA_site_01579_+_readcount_9 20
 ORF_003173 polyA_site_01580_+_readcount_2 0
 ORF_003173 polyA_site_01581_+_readcount_1 416
-WARNING: there might be a gene missing between polyA_site_01580_+_readcount_2 and polyA_site_01581_+_readcount_1
+WARNING: For gene ORF_003173, polyA polyA_site_01580_+_readcount_2 and polyA_site_01581_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_003175 polyA_site_01582_+_readcount_2 5
 ORF_003184 polyA_site_01585_+_readcount_13 19
 ORF_003184 polyA_site_01586_+_readcount_2 21
@@ -1286,7 +1283,7 @@ ORF_003205 polyA_site_01600_+_readcount_1 34
 ORF_003213-z polyA_site_01601_+_readcount_1 22
 ORF_003215 polyA_site_01602_+_readcount_7 211
 ORF_003215 polyA_site_01603_+_readcount_3 567
-WARNING: there might be a gene missing between polyA_site_01602_+_readcount_7 and polyA_site_01603_+_readcount_3
+WARNING: For gene ORF_003215, polyA polyA_site_01602_+_readcount_7 and polyA_site_01603_+_readcount_3 differ in UTR length by more than 50 bp. 
 ORF_003215 polyA_site_01604_+_readcount_1 566
 ORF_003216 polyA_site_01605_+_readcount_1 81
 ORF_003223 polyA_site_01608_+_readcount_9 24
@@ -1312,7 +1309,7 @@ ORF_003276 polyA_site_01632_+_readcount_2 10
 FUN_006590 polyA_site_01633_+_readcount_1 17
 ORF_003288 polyA_site_01635_+_readcount_8 0
 ORF_003288 polyA_site_01636_+_readcount_3 417
-WARNING: there might be a gene missing between polyA_site_01635_+_readcount_8 and polyA_site_01636_+_readcount_3
+WARNING: For gene ORF_003288, polyA polyA_site_01635_+_readcount_8 and polyA_site_01636_+_readcount_3 differ in UTR length by more than 50 bp. 
 ORF_003290 polyA_site_01637_+_readcount_6 38
 FUN_006609 polyA_site_01638_+_readcount_2 11
 ORF_003292 polyA_site_01639_+_readcount_2 17
@@ -1409,7 +1406,7 @@ FUN_006823 polyA_site_01734_+_readcount_31 50
 ORF_003482 polyA_site_01736_+_readcount_1 5
 ORF_003482 polyA_site_01737_+_readcount_37 7
 ORF_003482 polyA_site_01738_+_readcount_2 520
-WARNING: there might be a gene missing between polyA_site_01737_+_readcount_37 and polyA_site_01738_+_readcount_2
+WARNING: For gene ORF_003482, polyA polyA_site_01737_+_readcount_37 and polyA_site_01738_+_readcount_2 differ in UTR length by more than 50 bp. 
 ORF_003483 polyA_site_01739_+_readcount_7 14
 ORF_003484 polyA_site_01740_+_readcount_41 30
 ORF_003485 polyA_site_01741_+_readcount_63 13
@@ -1424,7 +1421,7 @@ FUN_006841 polyA_site_01749_+_readcount_1 14
 ORF_003501 polyA_site_01750_+_readcount_9 37
 ORF_003504 polyA_site_01751_+_readcount_4 25
 ORF_003504 polyA_site_01752_+_readcount_1 150
-WARNING: there might be a gene missing between polyA_site_01751_+_readcount_4 and polyA_site_01752_+_readcount_1
+WARNING: For gene ORF_003504, polyA polyA_site_01751_+_readcount_4 and polyA_site_01752_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_003505 polyA_site_01753_+_readcount_2 16
 ORF_003506-b polyA_site_01755_+_readcount_1 0
 ORF_003511 polyA_site_01757_+_readcount_3 0
@@ -1860,7 +1857,7 @@ ORF_004603 polyA_site_02285_+_readcount_1 -2
 ORF_004505-b polyA_site_02286_+_readcount_3 252
 WARNING: UTR (1976 bp) for gene ORF_004505-b is unusually long; a missing gene may be possible.
 ORF_004505-b polyA_site_02287_+_readcount_3 1976
-WARNING: there might be a gene missing between polyA_site_02286_+_readcount_3 and polyA_site_02287_+_readcount_3
+WARNING: For gene ORF_004505-b, polyA polyA_site_02286_+_readcount_3 and polyA_site_02287_+_readcount_3 differ in UTR length by more than 50 bp. 
 ORF_004611 polyA_site_02288_+_readcount_7 35
 ORF_004611 polyA_site_02289_+_readcount_15 36
 ORF_004612 polyA_site_02290_+_readcount_3 14
@@ -1982,7 +1979,6 @@ ORF_004867 polyA_site_02420_+_readcount_9 28
 ORF_004868 polyA_site_02421_+_readcount_1 60
 ORF_004868 polyA_site_02422_+_readcount_28 61
 ORF_004868 polyA_site_02423_+_readcount_1 62
-ORF_004869 polyA_site_02424_+_readcount_1 -3
 ORF_004870 polyA_site_02425_+_readcount_2 22
 ORF_004871 polyA_site_02426_+_readcount_1 6
 ORF_004872 polyA_site_02427_+_readcount_25 93
@@ -2011,7 +2007,7 @@ WARNING: UTR (2199 bp) for gene ORF_004938-b is unusually long; a missing gene m
 ORF_004938-b polyA_site_02455_+_readcount_1 2199
 WARNING: UTR (10156 bp) for gene ORF_004938-b is unusually long; a missing gene may be possible.
 ORF_004938-b polyA_site_02456_+_readcount_1 10156
-WARNING: there might be a gene missing between polyA_site_02455_+_readcount_1 and polyA_site_02456_+_readcount_1
+WARNING: For gene ORF_004938-b, polyA polyA_site_02455_+_readcount_1 and polyA_site_02456_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_004941 polyA_site_02457_+_readcount_1 20
 ORF_004954-b polyA_site_02458_+_readcount_7 126
 ORF_004962 polyA_site_02460_+_readcount_5 8
@@ -2076,12 +2072,12 @@ ORF_005112 polyA_site_02534_+_readcount_105 27
 ORF_005112 polyA_site_02535_+_readcount_1 26
 ORF_005112 polyA_site_02536_+_readcount_3 28
 ORF_005112 polyA_site_02537_+_readcount_1 397
-WARNING: there might be a gene missing between polyA_site_02536_+_readcount_3 and polyA_site_02537_+_readcount_1
+WARNING: For gene ORF_005112, polyA polyA_site_02536_+_readcount_3 and polyA_site_02537_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_005116 polyA_site_02539_+_readcount_2 20
 ORF_005120 polyA_site_02540_+_readcount_5 22
 ORF_005126 polyA_site_02541_+_readcount_1 176
 ORF_005126 polyA_site_02542_+_readcount_1 234
-WARNING: there might be a gene missing between polyA_site_02541_+_readcount_1 and polyA_site_02542_+_readcount_1
+WARNING: For gene ORF_005126, polyA polyA_site_02541_+_readcount_1 and polyA_site_02542_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_005128 polyA_site_02543_+_readcount_4 15
 ORF_005130 polyA_site_02544_+_readcount_16 13
 ORF_005136 polyA_site_02546_+_readcount_4 31
@@ -2152,7 +2148,7 @@ ORF_005355 polyA_site_02641_+_readcount_2 17
 ORF_005361-b polyA_site_02642_+_readcount_2 58
 WARNING: UTR (2784 bp) for gene ORF_005361-b is unusually long; a missing gene may be possible.
 ORF_005361-b polyA_site_02643_+_readcount_2 2784
-WARNING: there might be a gene missing between polyA_site_02642_+_readcount_2 and polyA_site_02643_+_readcount_2
+WARNING: For gene ORF_005361-b, polyA polyA_site_02642_+_readcount_2 and polyA_site_02643_+_readcount_2 differ in UTR length by more than 50 bp. 
 WARNING: UTR (2786 bp) for gene ORF_005361-b is unusually long; a missing gene may be possible.
 ORF_005361-b polyA_site_02644_+_readcount_6 2786
 ORF_005362 polyA_site_02645_+_readcount_1 1
@@ -2207,7 +2203,7 @@ ORF_005512 polyA_site_02708_+_readcount_1 2
 ORF_005514 polyA_site_02709_+_readcount_7 21
 ORF_005519-d polyA_site_02711_+_readcount_4 624
 ORF_005519-d polyA_site_02712_+_readcount_6 755
-WARNING: there might be a gene missing between polyA_site_02711_+_readcount_4 and polyA_site_02712_+_readcount_6
+WARNING: For gene ORF_005519-d, polyA polyA_site_02711_+_readcount_4 and polyA_site_02712_+_readcount_6 differ in UTR length by more than 50 bp. 
 ORF_005525 polyA_site_02713_+_readcount_3 15
 ORF_005525 polyA_site_02714_+_readcount_1 16
 ORFr_005933 polyA_site_02715_+_readcount_8 62
@@ -2323,7 +2319,7 @@ ORF_005881 polyA_site_02874_+_readcount_5 61
 ORF_005885 polyA_site_02875_+_readcount_4 29
 WARNING: UTR (2180 bp) for gene ORF_005885 is unusually long; a missing gene may be possible.
 ORF_005885 polyA_site_02876_+_readcount_4 2180
-WARNING: there might be a gene missing between polyA_site_02875_+_readcount_4 and polyA_site_02876_+_readcount_4
+WARNING: For gene ORF_005885, polyA polyA_site_02875_+_readcount_4 and polyA_site_02876_+_readcount_4 differ in UTR length by more than 50 bp. 
 ORF_005887 polyA_site_02877_+_readcount_1 2
 WARNING: UTR (1038 bp) for gene ORFr_006326 is unusually long; a missing gene may be possible.
 ORFr_006326 polyA_site_02878_+_readcount_1 1038
@@ -2341,7 +2337,7 @@ FUN_005744 polyA_site_02889_+_readcount_6 16
 FUN_005744 polyA_site_02890_+_readcount_36 17
 WARNING: UTR (1793 bp) for gene FUN_005744 is unusually long; a missing gene may be possible.
 FUN_005744 polyA_site_02891_+_readcount_1 1793
-WARNING: there might be a gene missing between polyA_site_02890_+_readcount_36 and polyA_site_02891_+_readcount_1
+WARNING: For gene FUN_005744, polyA polyA_site_02890_+_readcount_36 and polyA_site_02891_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_005917 polyA_site_02892_+_readcount_67 34
 ORF_005917 polyA_site_02893_+_readcount_1 31
 ORF_005919 polyA_site_02894_+_readcount_1 4
@@ -2405,17 +2401,17 @@ ORF_006041 polyA_site_02969_+_readcount_9 42
 ORF_006043 polyA_site_02970_+_readcount_3 34
 ORF_006049 polyA_site_02973_+_readcount_3 4
 ORF_006049 polyA_site_02974_+_readcount_4 762
-WARNING: there might be a gene missing between polyA_site_02973_+_readcount_3 and polyA_site_02974_+_readcount_4
+WARNING: For gene ORF_006049, polyA polyA_site_02973_+_readcount_3 and polyA_site_02974_+_readcount_4 differ in UTR length by more than 50 bp. 
 WARNING: UTR (1019 bp) for gene ORF_006049 is unusually long; a missing gene may be possible.
 ORF_006049 polyA_site_02975_+_readcount_27 1019
-WARNING: there might be a gene missing between polyA_site_02974_+_readcount_4 and polyA_site_02975_+_readcount_27
+WARNING: For gene ORF_006049, polyA polyA_site_02974_+_readcount_4 and polyA_site_02975_+_readcount_27 differ in UTR length by more than 50 bp. 
 ORF_006052 polyA_site_02976_+_readcount_2 14
 ORF_006054 polyA_site_02977_+_readcount_4 23
 ORF_006059 polyA_site_02979_+_readcount_51 25
 ORF_006059 polyA_site_02980_+_readcount_1 20
 WARNING: UTR (1561 bp) for gene ORF_006059 is unusually long; a missing gene may be possible.
 ORF_006059 polyA_site_02981_+_readcount_1 1561
-WARNING: there might be a gene missing between polyA_site_02980_+_readcount_1 and polyA_site_02981_+_readcount_1
+WARNING: For gene ORF_006059, polyA polyA_site_02980_+_readcount_1 and polyA_site_02981_+_readcount_1 differ in UTR length by more than 50 bp. 
 WARNING: UTR (1562 bp) for gene ORF_006059 is unusually long; a missing gene may be possible.
 ORF_006059 polyA_site_02982_+_readcount_1 1562
 ORF_006063 polyA_site_02983_+_readcount_2 21
@@ -2568,7 +2564,7 @@ ORF_006401 polyA_site_03155_+_readcount_2 20
 ORF_006404 polyA_site_03156_+_readcount_22 2
 ORF_006406 polyA_site_03157_+_readcount_1 87
 ORF_006406 polyA_site_03158_+_readcount_1 553
-WARNING: there might be a gene missing between polyA_site_03157_+_readcount_1 and polyA_site_03158_+_readcount_1
+WARNING: For gene ORF_006406, polyA polyA_site_03157_+_readcount_1 and polyA_site_03158_+_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_006408 polyA_site_03160_+_readcount_5 14
 FUN_005698 polyA_site_03161_+_readcount_3 15
 ORF_006410 polyA_site_03162_+_readcount_1 0
@@ -2619,7 +2615,7 @@ ORF_006542-b polyA_site_03218_+_readcount_4 1487
 WARNING: UTR (1294 bp) for gene ORF_000001 is unusually long; a missing gene may be possible.
 ORF_000001 polyA_site_03221_-_readcount_8 1294
 ORF_000001 polyA_site_03222_-_readcount_2 108
-WARNING: there might be a gene missing between polyA_site_03221_-_readcount_8 and polyA_site_03222_-_readcount_2
+WARNING: For gene ORF_000001, polyA polyA_site_03221_-_readcount_8 and polyA_site_03222_-_readcount_2 differ in UTR length by more than 50 bp. 
 ORF_000008 polyA_site_03225_-_readcount_2 20
 ORF_000010 polyA_site_03226_-_readcount_6 4
 ORF_000013 polyA_site_03227_-_readcount_3 29
@@ -2675,7 +2671,6 @@ ORF_000127 polyA_site_03288_-_readcount_62 28
 ORF_000129 polyA_site_03289_-_readcount_2 7
 ORF_000130 polyA_site_03290_-_readcount_12 176
 ORF_000132 polyA_site_03291_-_readcount_2 -1
-ORF_000132 polyA_site_03292_-_readcount_7 -3
 ORF_000136 polyA_site_03293_-_readcount_42 31
 ORF_000136 polyA_site_03294_-_readcount_1 29
 ORF_000139 polyA_site_03295_-_readcount_14 28
@@ -2760,7 +2755,7 @@ ORF_000313 polyA_site_03393_-_readcount_5 101
 ORF_000315 polyA_site_03394_-_readcount_14 19
 ORF_000320 polyA_site_03395_-_readcount_3 468
 ORF_000320 polyA_site_03396_-_readcount_9 63
-WARNING: there might be a gene missing between polyA_site_03395_-_readcount_3 and polyA_site_03396_-_readcount_9
+WARNING: For gene ORF_000320, polyA polyA_site_03395_-_readcount_3 and polyA_site_03396_-_readcount_9 differ in UTR length by more than 50 bp. 
 ORF_000320 polyA_site_03397_-_readcount_2 61
 ORF_000326 polyA_site_03400_-_readcount_4 3
 ORF_000328 polyA_site_03401_-_readcount_1 -2
@@ -2872,11 +2867,11 @@ ORF_000522 polyA_site_03526_-_readcount_2 405
 WARNING: UTR (5816 bp) for gene ORF_000523 is unusually long; a missing gene may be possible.
 ORF_000523 polyA_site_03528_-_readcount_1 5816
 ORF_000523 polyA_site_03529_-_readcount_2 14
-WARNING: there might be a gene missing between polyA_site_03528_-_readcount_1 and polyA_site_03529_-_readcount_2
+WARNING: For gene ORF_000523, polyA polyA_site_03528_-_readcount_1 and polyA_site_03529_-_readcount_2 differ in UTR length by more than 50 bp. 
 WARNING: UTR (1922 bp) for gene ORF_000524 is unusually long; a missing gene may be possible.
 ORF_000524 polyA_site_03530_-_readcount_5 1922
 ORF_000524 polyA_site_03531_-_readcount_2 804
-WARNING: there might be a gene missing between polyA_site_03530_-_readcount_5 and polyA_site_03531_-_readcount_2
+WARNING: For gene ORF_000524, polyA polyA_site_03530_-_readcount_5 and polyA_site_03531_-_readcount_2 differ in UTR length by more than 50 bp. 
 ORF_000529-b polyA_site_03532_-_readcount_21 48
 ORF_000534 polyA_site_03534_-_readcount_2 6
 ORF_000545 polyA_site_03536_-_readcount_22 11
@@ -2888,7 +2883,7 @@ ORF_000553 polyA_site_03541_-_readcount_1 14
 WARNING: UTR (1278 bp) for gene ORF_000555 is unusually long; a missing gene may be possible.
 ORF_000555 polyA_site_03542_-_readcount_2 1278
 ORF_000555 polyA_site_03543_-_readcount_6 18
-WARNING: there might be a gene missing between polyA_site_03542_-_readcount_2 and polyA_site_03543_-_readcount_6
+WARNING: For gene ORF_000555, polyA polyA_site_03542_-_readcount_2 and polyA_site_03543_-_readcount_6 differ in UTR length by more than 50 bp. 
 ORF_000556 polyA_site_03544_-_readcount_1 33
 ORF_000558 polyA_site_03545_-_readcount_23 -2
 ORF_000560 polyA_site_03546_-_readcount_4 18
@@ -3060,7 +3055,7 @@ ORF_000973 polyA_site_03746_-_readcount_1 1588
 WARNING: UTR (7610 bp) for gene ORF_000974 is unusually long; a missing gene may be possible.
 ORF_000974 polyA_site_03747_-_readcount_1 7610
 ORF_000974 polyA_site_03748_-_readcount_1 382
-WARNING: there might be a gene missing between polyA_site_03747_-_readcount_1 and polyA_site_03748_-_readcount_1
+WARNING: For gene ORF_000974, polyA polyA_site_03747_-_readcount_1 and polyA_site_03748_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_000975 polyA_site_03749_-_readcount_4 53
 ORF_000983 polyA_site_03751_-_readcount_5 7
 ORF_000986 polyA_site_03753_-_readcount_10 32
@@ -3093,7 +3088,7 @@ ORF_001071 polyA_site_03795_-_readcount_1 61
 WARNING: UTR (1806 bp) for gene ORF_001073 is unusually long; a missing gene may be possible.
 ORF_001073 polyA_site_03797_-_readcount_5 1806
 ORF_001073 polyA_site_03798_-_readcount_11 143
-WARNING: there might be a gene missing between polyA_site_03797_-_readcount_5 and polyA_site_03798_-_readcount_11
+WARNING: For gene ORF_001073, polyA polyA_site_03797_-_readcount_5 and polyA_site_03798_-_readcount_11 differ in UTR length by more than 50 bp. 
 ORF_001075-b polyA_site_03799_-_readcount_2 -1
 ORF_001076 polyA_site_03800_-_readcount_2 3
 ORF_001080 polyA_site_03803_-_readcount_1 17
@@ -3155,7 +3150,6 @@ ORF_001215 polyA_site_03867_-_readcount_246 46
 ORF_001215 polyA_site_03868_-_readcount_1 45
 ORF_001217-b polyA_site_03869_-_readcount_34 31
 ORF_001219 polyA_site_03870_-_readcount_8 0
-ORF_001219 polyA_site_03871_-_readcount_1 -3
 ORF_001220 polyA_site_03872_-_readcount_2 3
 ORF_001221 polyA_site_03873_-_readcount_8 3
 ORF_001231 polyA_site_03874_-_readcount_1 13
@@ -3567,7 +3561,7 @@ ORF_002298 polyA_site_04402_-_readcount_15 5
 WARNING: UTR (1393 bp) for gene ORF_002299 is unusually long; a missing gene may be possible.
 ORF_002299 polyA_site_04403_-_readcount_6 1393
 ORF_002299 polyA_site_04404_-_readcount_8 18
-WARNING: there might be a gene missing between polyA_site_04403_-_readcount_6 and polyA_site_04404_-_readcount_8
+WARNING: For gene ORF_002299, polyA polyA_site_04403_-_readcount_6 and polyA_site_04404_-_readcount_8 differ in UTR length by more than 50 bp. 
 ORF_002300 polyA_site_04405_-_readcount_9 213
 ORF_002303 polyA_site_04406_-_readcount_1 3
 ORF_002305 polyA_site_04407_-_readcount_1 118
@@ -3577,7 +3571,7 @@ ORF_002322 polyA_site_04413_-_readcount_35 30
 ORF_002322 polyA_site_04414_-_readcount_1 29
 ORF_002325 polyA_site_04415_-_readcount_12 484
 ORF_002325 polyA_site_04416_-_readcount_1 16
-WARNING: there might be a gene missing between polyA_site_04415_-_readcount_12 and polyA_site_04416_-_readcount_1
+WARNING: For gene ORF_002325, polyA polyA_site_04415_-_readcount_12 and polyA_site_04416_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_002325 polyA_site_04417_-_readcount_3 15
 ORF_002325 polyA_site_04418_-_readcount_1 14
 ORF_002329 polyA_site_04419_-_readcount_1 27
@@ -3663,7 +3657,7 @@ ORF_002546 polyA_site_04517_-_readcount_2 16
 ORF_002546 polyA_site_04518_-_readcount_4 15
 ORF_002549 polyA_site_04520_-_readcount_8 406
 ORF_002549 polyA_site_04521_-_readcount_15 18
-WARNING: there might be a gene missing between polyA_site_04520_-_readcount_8 and polyA_site_04521_-_readcount_15
+WARNING: For gene ORF_002549, polyA polyA_site_04520_-_readcount_8 and polyA_site_04521_-_readcount_15 differ in UTR length by more than 50 bp. 
 ORF_002549 polyA_site_04522_-_readcount_1 17
 ORF_002548 polyA_site_04523_-_readcount_1 29
 ORF_002552 polyA_site_04525_-_readcount_8 50
@@ -3877,7 +3871,7 @@ FUN_006254 polyA_site_04782_-_readcount_3 13
 WARNING: UTR (1683 bp) for gene ORF_003024 is unusually long; a missing gene may be possible.
 ORF_003024 polyA_site_04783_-_readcount_73 1683
 ORF_003024 polyA_site_04784_-_readcount_1 5
-WARNING: there might be a gene missing between polyA_site_04783_-_readcount_73 and polyA_site_04784_-_readcount_1
+WARNING: For gene ORF_003024, polyA polyA_site_04783_-_readcount_73 and polyA_site_04784_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_003027 polyA_site_04786_-_readcount_12 17
 ORF_003031 polyA_site_04788_-_readcount_2 14
 ORF_003032 polyA_site_04789_-_readcount_1 0
@@ -3906,7 +3900,6 @@ ORF_003079 polyA_site_04812_-_readcount_3 3
 ORF_003087 polyA_site_04813_-_readcount_1 3
 ORF_003091 polyA_site_04814_-_readcount_5 15
 ORF_003092 polyA_site_04815_-_readcount_5 -1
-ORF_003092 polyA_site_04816_-_readcount_1 -3
 ORF_003093 polyA_site_04817_-_readcount_8 69
 ORF_003094 polyA_site_04818_-_readcount_2 3
 ORF_003098 polyA_site_04819_-_readcount_21 24
@@ -4054,7 +4047,7 @@ FUN_006781 polyA_site_04988_-_readcount_1 22
 ORF_003445 polyA_site_04989_-_readcount_1 5
 ORF_003448 polyA_site_04990_-_readcount_1 68
 ORF_003448 polyA_site_04991_-_readcount_8 7
-WARNING: there might be a gene missing between polyA_site_04990_-_readcount_1 and polyA_site_04991_-_readcount_8
+WARNING: For gene ORF_003448, polyA polyA_site_04990_-_readcount_1 and polyA_site_04991_-_readcount_8 differ in UTR length by more than 50 bp. 
 ORF_003461 polyA_site_04994_-_readcount_3 21
 ORF_003461 polyA_site_04995_-_readcount_5 18
 ORF_003465 polyA_site_04996_-_readcount_3 57
@@ -4077,7 +4070,7 @@ ORF_003535 polyA_site_05017_-_readcount_1 7
 WARNING: UTR (1920 bp) for gene ORF_003543 is unusually long; a missing gene may be possible.
 ORF_003543 polyA_site_05018_-_readcount_5 1920
 ORF_003543 polyA_site_05019_-_readcount_7 804
-WARNING: there might be a gene missing between polyA_site_05018_-_readcount_5 and polyA_site_05019_-_readcount_7
+WARNING: For gene ORF_003543, polyA polyA_site_05018_-_readcount_5 and polyA_site_05019_-_readcount_7 differ in UTR length by more than 50 bp. 
 ORF_003544 polyA_site_05020_-_readcount_1 39
 ORF_003547 polyA_site_05021_-_readcount_52 13
 ORF_003553 polyA_site_05023_-_readcount_4 25
@@ -4182,7 +4175,7 @@ ORF_003792 polyA_site_05147_-_readcount_6 27
 ORF_003792 polyA_site_05148_-_readcount_3 22
 ORF_003797 polyA_site_05149_-_readcount_1 114
 ORF_003797 polyA_site_05150_-_readcount_1 37
-WARNING: there might be a gene missing between polyA_site_05149_-_readcount_1 and polyA_site_05150_-_readcount_1
+WARNING: For gene ORF_003797, polyA polyA_site_05149_-_readcount_1 and polyA_site_05150_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_003800 polyA_site_05152_-_readcount_4 15
 ORF_003802 polyA_site_05153_-_readcount_2 0
 ORF_003805 polyA_site_05156_-_readcount_7 35
@@ -4218,7 +4211,7 @@ ORF_003871 polyA_site_05194_-_readcount_12 28
 ORF_003878 polyA_site_05196_-_readcount_12 51
 ORF_003884 polyA_site_05197_-_readcount_1 350
 ORF_003884 polyA_site_05198_-_readcount_1 34
-WARNING: there might be a gene missing between polyA_site_05197_-_readcount_1 and polyA_site_05198_-_readcount_1
+WARNING: For gene ORF_003884, polyA polyA_site_05197_-_readcount_1 and polyA_site_05198_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_003884 polyA_site_05199_-_readcount_69 33
 ORF_003884 polyA_site_05200_-_readcount_1 32
 ORF_003888 polyA_site_05202_-_readcount_23 26
@@ -4359,7 +4352,7 @@ ORF_004218 polyA_site_05371_-_readcount_33 54
 WARNING: UTR (1484 bp) for gene ORF_004220 is unusually long; a missing gene may be possible.
 ORF_004220 polyA_site_05372_-_readcount_1 1484
 ORF_004220 polyA_site_05373_-_readcount_3 37
-WARNING: there might be a gene missing between polyA_site_05372_-_readcount_1 and polyA_site_05373_-_readcount_3
+WARNING: For gene ORF_004220, polyA polyA_site_05372_-_readcount_1 and polyA_site_05373_-_readcount_3 differ in UTR length by more than 50 bp. 
 ORF_004222 polyA_site_05374_-_readcount_48 2
 ORF_004224 polyA_site_05375_-_readcount_2 49
 FUN_004011 polyA_site_05376_-_readcount_14 31
@@ -4393,12 +4386,12 @@ ORF_004310 polyA_site_05415_-_readcount_1 17
 ORF_004311 polyA_site_05416_-_readcount_3 10
 ORF_004312 polyA_site_05417_-_readcount_18 454
 ORF_004312 polyA_site_05418_-_readcount_8 26
-WARNING: there might be a gene missing between polyA_site_05417_-_readcount_18 and polyA_site_05418_-_readcount_8
+WARNING: For gene ORF_004312, polyA polyA_site_05417_-_readcount_18 and polyA_site_05418_-_readcount_8 differ in UTR length by more than 50 bp. 
 ORF_004313 polyA_site_05419_-_readcount_1 20
 WARNING: UTR (1814 bp) for gene ORF_004314 is unusually long; a missing gene may be possible.
 ORF_004314 polyA_site_05420_-_readcount_5 1814
 ORF_004314 polyA_site_05421_-_readcount_129 44
-WARNING: there might be a gene missing between polyA_site_05420_-_readcount_5 and polyA_site_05421_-_readcount_129
+WARNING: For gene ORF_004314, polyA polyA_site_05420_-_readcount_5 and polyA_site_05421_-_readcount_129 differ in UTR length by more than 50 bp. 
 ORF_004314 polyA_site_05422_-_readcount_1 43
 ORF_004316 polyA_site_05423_-_readcount_13 19
 ORF_004317 polyA_site_05424_-_readcount_3 20
@@ -4747,7 +4740,6 @@ ORF_005228 polyA_site_05868_-_readcount_2 4
 ORF_005228 polyA_site_05869_-_readcount_13 0
 ORF_005232 polyA_site_05870_-_readcount_10 184
 ORF_005233 polyA_site_05871_-_readcount_2 -1
-ORF_005233 polyA_site_05872_-_readcount_2 -3
 ORF_005236 polyA_site_05873_-_readcount_29 39
 ORF_005236 polyA_site_05874_-_readcount_7 38
 ORF_005237 polyA_site_05875_-_readcount_2 14
@@ -4826,9 +4818,9 @@ WARNING: UTR (5621 bp) for gene ORF_005444 is unusually long; a missing gene may
 ORF_005444 polyA_site_05970_-_readcount_2 5621
 WARNING: UTR (5542 bp) for gene ORF_005444 is unusually long; a missing gene may be possible.
 ORF_005444 polyA_site_05971_-_readcount_2 5542
-WARNING: there might be a gene missing between polyA_site_05970_-_readcount_2 and polyA_site_05971_-_readcount_2
+WARNING: For gene ORF_005444, polyA polyA_site_05970_-_readcount_2 and polyA_site_05971_-_readcount_2 differ in UTR length by more than 50 bp. 
 ORF_005444 polyA_site_05972_-_readcount_1 113
-WARNING: there might be a gene missing between polyA_site_05971_-_readcount_2 and polyA_site_05972_-_readcount_1
+WARNING: For gene ORF_005444, polyA polyA_site_05971_-_readcount_2 and polyA_site_05972_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_005445 polyA_site_05973_-_readcount_3 35
 ORF_005445 polyA_site_05974_-_readcount_2 16
 ORF_005449 polyA_site_05976_-_readcount_1 0
@@ -5022,7 +5014,7 @@ FUN_005001 polyA_site_06214_-_readcount_21 9
 WARNING: UTR (1015 bp) for gene ORF_005841 is unusually long; a missing gene may be possible.
 ORF_005841 polyA_site_06215_-_readcount_4 1015
 ORF_005841 polyA_site_06216_-_readcount_74 31
-WARNING: there might be a gene missing between polyA_site_06215_-_readcount_4 and polyA_site_06216_-_readcount_74
+WARNING: For gene ORF_005841, polyA polyA_site_06215_-_readcount_4 and polyA_site_06216_-_readcount_74 differ in UTR length by more than 50 bp. 
 ORF_005844-a polyA_site_06217_-_readcount_8 54
 ORF_005846 polyA_site_06219_-_readcount_16 35
 ORF_005846 polyA_site_06220_-_readcount_1 32
@@ -5057,7 +5049,6 @@ ORF_005906 polyA_site_06252_-_readcount_2 20
 FUN_005746 polyA_site_06254_-_readcount_2 7
 FUN_005746 polyA_site_06255_-_readcount_12 6
 ORF_005922 polyA_site_06257_-_readcount_72 -1
-ORF_005922 polyA_site_06258_-_readcount_1 -3
 ORF_005927 polyA_site_06261_-_readcount_3 106
 ORF_005932 polyA_site_06263_-_readcount_1 16
 ORF_005933 polyA_site_06264_-_readcount_3 7
@@ -5100,7 +5091,6 @@ ORF_006089 polyA_site_06323_-_readcount_4 19
 ORF_006094 polyA_site_06324_-_readcount_1 7
 ORF_006095 polyA_site_06325_-_readcount_4 30
 ORF_006098 polyA_site_06326_-_readcount_1 0
-ORF_006099 polyA_site_06327_-_readcount_1 -3
 ORF_006100 polyA_site_06328_-_readcount_20 17
 FUN_001002 polyA_site_06330_-_readcount_1 12
 ORF_006112 polyA_site_06331_-_readcount_3 15
@@ -5124,7 +5114,7 @@ ORF_006188 polyA_site_06361_-_readcount_6 3
 ORF_006192 polyA_site_06363_-_readcount_2 10
 ORF_006194-a polyA_site_06364_-_readcount_3 495
 ORF_006194-a polyA_site_06365_-_readcount_8 12
-WARNING: there might be a gene missing between polyA_site_06364_-_readcount_3 and polyA_site_06365_-_readcount_8
+WARNING: For gene ORF_006194-a, polyA polyA_site_06364_-_readcount_3 and polyA_site_06365_-_readcount_8 differ in UTR length by more than 50 bp. 
 ORF_006195 polyA_site_06366_-_readcount_2 7
 ORF_006196 polyA_site_06367_-_readcount_1 10
 ORF_006201 polyA_site_06368_-_readcount_7 28
@@ -5180,14 +5170,13 @@ ORF_006326 polyA_site_06440_-_readcount_1 5
 ORF_006328 polyA_site_06441_-_readcount_40 25
 ORF_006330 polyA_site_06442_-_readcount_12 13
 ORF_006333 polyA_site_06443_-_readcount_1 0
-ORF_006335 polyA_site_06446_-_readcount_1 -3
 WARNING: UTR (4928 bp) for gene ORF_006339 is unusually long; a missing gene may be possible.
 ORF_006339 polyA_site_06448_-_readcount_1 4928
 WARNING: UTR (11027 bp) for gene ORFr_006820 is unusually long; a missing gene may be possible.
 ORFr_006820 polyA_site_06449_-_readcount_3 11027
 WARNING: UTR (10948 bp) for gene ORFr_006820 is unusually long; a missing gene may be possible.
 ORFr_006820 polyA_site_06450_-_readcount_1 10948
-WARNING: there might be a gene missing between polyA_site_06449_-_readcount_3 and polyA_site_06450_-_readcount_1
+WARNING: For gene ORFr_006820, polyA polyA_site_06449_-_readcount_3 and polyA_site_06450_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_006351 polyA_site_06454_-_readcount_19 20
 ORF_006359 polyA_site_06456_-_readcount_33 29
 ORF_006363 polyA_site_06458_-_readcount_1 10
@@ -5232,9 +5221,9 @@ ORF_006473 polyA_site_06510_-_readcount_67 18
 WARNING: UTR (1003 bp) for gene ORF_006475 is unusually long; a missing gene may be possible.
 ORF_006475 polyA_site_06511_-_readcount_1 1003
 ORF_006475 polyA_site_06512_-_readcount_1 84
-WARNING: there might be a gene missing between polyA_site_06511_-_readcount_1 and polyA_site_06512_-_readcount_1
+WARNING: For gene ORF_006475, polyA polyA_site_06511_-_readcount_1 and polyA_site_06512_-_readcount_1 differ in UTR length by more than 50 bp. 
 ORF_006475 polyA_site_06513_-_readcount_4 31
-WARNING: there might be a gene missing between polyA_site_06512_-_readcount_1 and polyA_site_06513_-_readcount_4
+WARNING: For gene ORF_006475, polyA polyA_site_06512_-_readcount_1 and polyA_site_06513_-_readcount_4 differ in UTR length by more than 50 bp. 
 ORF_006476 polyA_site_06514_-_readcount_1 12
 ORF_006477 polyA_site_06515_-_readcount_3 17
 ORF_006479 polyA_site_06516_-_readcount_1 36
