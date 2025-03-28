@@ -1,4 +1,4 @@
-# $ python UTR_length_finder.py -g1 ST2_orfs.gff3 -g2 march4_has_stop_polyA.gff3 -f ST2_sorted_masked.fasta > UTR_length_info_new.txt
+# $ python UTR_length_finder.py -g1 ST2_orfs.gff3 -g2 march4_has_stop_polyA.gff3 -f ST2_sorted_masked.fasta > UTR_length_info_last_version.txt
 
 # $ wc -l stop_polyA_align.gff3
 # 410 stop_polyA_align.gff3
@@ -42,8 +42,8 @@ class Interval:
 
 def main() -> None:
     # FIX: Use in-memory DB cautiously, large files might cause issues.
-    db_genes: FeatureDB = gffutils.create_db(args.genes, dbfn='memory', merge_strategy="create_unique")
-    db_polyA: FeatureDB = gffutils.create_db(args.polyA, dbfn='memory', merge_strategy="create_unique")
+    db_genes: FeatureDB = gffutils.create_db(args.genes, dbfn=':memory:', merge_strategy="create_unique")
+    db_polyA: FeatureDB = gffutils.create_db(args.polyA, dbfn=':memory:', merge_strategy="create_unique")
     sequences = SeqIO.index(args.fasta, 'fasta')
 
     # Generate intervals
@@ -51,57 +51,88 @@ def main() -> None:
     gene_intervals: List[Interval] = process_gene_intervals(db_genes)
     UTR_lengths_list: List[int] = find_UTR_lengths(gene_intervals, db_polyA, sequences)
 
-
     UTR_lengths_series = pd.Series(UTR_lengths_list, name="UTR Length")
-    sns.histplot(
+
+    #give the x-axis limit of 200
+    plot = sns.histplot(
         UTR_lengths_series,
         bins=1000,
         kde=True
-    ).get_figure().savefig("UTR_length_distribution.jpg", dpi=300)
+    )
+    plt.xlim(-5, 200)
+    plot.get_figure().savefig("UTR_length_distribution_limited.jpg", dpi=300)
 
-      
+
+    plot = sns.histplot(
+        UTR_lengths_series,
+        bins=1000,
+        kde=True
+    )
+    plot.get_figure().savefig("UTR_length_distribution.jpg", dpi=300)
+
+
 
 def process_gene_intervals(db: FeatureDB) -> List[Interval]:
     """
-    Generate intervals between 'big' genes in the GFF3 database,
-    skipping smaller genes overlapped by a bigger gene.
+    Build intervals by:
+      1) Iterating through each seqid in db.seqids().
+      2) Retrieving genes for that seqid using db.region(...).
+      3) Sorting them by start coordinate; if the starts are the same, prioritize descending ends.
+      4) Skipping overshadowed genes by keeping the largest(big gene) (non-overlapping).
+      5) Creating intervals between these final big genes, plus intervals
     """
     intervals: List[Interval] = []
-    genes_by_contig: Dict[str, List[Feature]] = {}
 
-    # Collect genes by contig
-    for gene in db.features_of_type("gene"):
-        if gene.seqid not in genes_by_contig:
-            genes_by_contig[gene.seqid] = []
-        genes_by_contig[gene.seqid].append(gene)
+    for contig in db.seqids():
+        # Get all 'gene' features on this contig
+        genes = list(db.region(seqid=contig, featuretype="gene", completely_within=False))
 
-    # Process each contig individually
-    for contig, genes in genes_by_contig.items():
-        
-        # Sort genes by their start positions and in case of starting at the same point prioritise the ones with further ends
+        if not genes:
+            continue
+
+        # Sort by ascending start and descending ends in the second priority
         genes.sort(key=lambda g: (g.start, -g.end))
 
-        # Create interval from "start of genome" to the first gene
-        first_gene = genes[0]
-        intervals.append(Interval(contig=contig, gene_left=None, gene_right=first_gene))
-        correct_start = first_gene
-
-        # Iterate over the remaining genes
+        # Keep only non-overlapping 'big' genes
+        big_genes: List[Feature] = []
+        current = genes[0]
         for i in range(1, len(genes)):
-            
-            # If next gene is overshadowed by correct_start (start < correct_start.end), skip it
-            if genes[i].start < correct_start.end:
-                continue
+            g = genes[i]
+            # Overlap check
+            if g.start <= current.end:
+                # They overlap => keep the one that extends 
+                if g.end > current.end:
+                    current = g
+            else:
+                # No overlap => finalize 'current'
+                big_genes.append(current)
+                current = g
 
-            # Otherwise, create an interval from the last big gene to this new gene
-            intervals.append(Interval(contig=contig, gene_left=correct_start, gene_right=genes[i]))
+        # Add the last 'current'
+        big_genes.append(current)
 
-            correct_start = genes[i]
+        # half-interval from "start-of-seqid" to the first big gene
+        first_gene = big_genes[0]
+        intervals.append(
+            Interval(contig=contig, gene_left=None, gene_right=first_gene)
+        )
 
-        # Create interval from the last big gene to "end of genome"
-        intervals.append(Interval(contig=contig, gene_left=correct_start, gene_right=None))
+        # Intervals between big genes
+        for i in range(len(big_genes) - 1):
+            left_gene = big_genes[i]
+            right_gene = big_genes[i + 1]
+            intervals.append(
+                Interval(contig=contig, gene_left=left_gene, gene_right=right_gene)
+            )
+
+        # half-interval from the last gene to "end-of-seqid"
+        last_gene = big_genes[-1]
+        intervals.append(
+            Interval(contig=contig, gene_left=last_gene, gene_right=None)
+        )
 
     return intervals
+
 
 def find_UTR_lengths(
     gene_intervals: List[Interval],
