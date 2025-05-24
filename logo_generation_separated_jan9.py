@@ -1,5 +1,20 @@
 #!/usr/bin/env python
 
+###For has_stop category:
+##(base) tania@tanias-MacBook-Air 02_mini_projects % python logo_generation_separated_jan9.py -g1 march4_has_stop_polyA.gff3 
+# -f ST2_sorted_masked.fasta --outAll has_stop_all --out3 has_stop_gap3 --out4a has_stop_gap4a --out4b has_stop_gap4b 
+# --out4c has_stop_gap4c --out5 has_stop_gap5 --outElse has_stop_else -g2 else_polyAs_has_stop_logo.gff3
+
+###Results for has_stop category:
+# Total sequences: 5163
+# 3-gap matches: 52
+# 4-gap matches, just T: 1828
+# 4-gap matches, TG: 372
+# 4-gap matches, TA: 215
+# 5-gap matches: 175
+# else (no match): 2521
+
+
 import argparse
 from Bio import SeqIO
 from Bio.Seq import Seq
